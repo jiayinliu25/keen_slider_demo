@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.css"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,shrink-to-fit=no"
+    />
+    <title>Owl Carousel Demo</title>
+  
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+      <div id="my-keen-slider" class="keen-slider zoom-out">
+          <div class="keen-slider__slide zoom-out__slide">
+            <div><img src="images/AllegraWestbrooks_Arcadia.jpg" alt="" />
+          </div>
+        </div>
+
+          <div class="keen-slider__slide zoom-out__slide">
+            <div>
+            <img src="images/MyersStSchoolTeachers_Frye.jpg" alt="" />
+          </div>
+        </div>
+
+          <div class="keen-slider__slide zoom-out__slide">
+            <div>
+            <img src="images/Varick_building.jpg" alt="" />
+          </div>
+        </div>
+          <div class="keen-slider__slide zoom-out__slide">
+            <div>
+            <img src="images/MyersStSchoolpre1920_Arcadia.jpg" alt="" />
+          </div>
+        </div>
+          <div class="keen-slider__slide zoom-out__slide">
+            <div>
+            <img src="images/SawyerAfter_CR.jpg" alt="" />
+            </div>
+          </div>
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.js"></script>
+    <script>
+      var slider = new KeenSlider("#my-keen-slider", {
+        loop: true,
+        detailsChanged: (s) => {
+          const slides = s.track.details.slides
+          s.slides.forEach((element, idx) => {
+            scaleElement(element.querySelector("div"), slides[idx].portion)
+          })
+        },
+        initial: 2,
+      })
+
+      function scaleElement(element, portion) {
+        var scale_size = 0.7
+        var scale = 1 - (scale_size - scale_size * portion)
+        var style = `scale(${scale})`
+        element.style.transform = style
+        element.style["-webkit-transform"] = style
+      }
+    </script>
+  </body>
+</html>
